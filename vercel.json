@@ -4,9 +4,7 @@
       "root": "frontend/"
     },
     "backend": {
-      "root": "backend/",
-      "entrypoint": "src/main.ts",
-      "installCommand": "npm install"
+      "root": "backend/"
     }
   },
   "rewrites": [
