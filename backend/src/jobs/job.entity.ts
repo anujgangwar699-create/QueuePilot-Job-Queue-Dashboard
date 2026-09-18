@@ -1,4 +1,10 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, VersionColumn } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  PrimaryGeneratedColumn,
+  VersionColumn,
+} from 'typeorm';
 
 export enum JobStatus {
   PENDING = 'pending',
@@ -9,10 +15,21 @@ export enum JobStatus {
 
 @Entity('jobs')
 export class Job {
-  @PrimaryGeneratedColumn('uuid') id: string;
-  @Column() title: string;
-  @Column() type: string;
-  @Column({ type: 'text', default: JobStatus.PENDING }) status: JobStatus;
-  @CreateDateColumn() createdAt: Date;
-  @VersionColumn() version: number;
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
+
+  @Column()
+  title: string;
+
+  @Column()
+  type: string;
+
+  @Column({ type: 'text', default: JobStatus.PENDING })
+  status: JobStatus = JobStatus.PENDING;
+
+  @CreateDateColumn()
+  createdAt: Date = new Date();
+
+  @VersionColumn()
+  version: number = 1;
 }
