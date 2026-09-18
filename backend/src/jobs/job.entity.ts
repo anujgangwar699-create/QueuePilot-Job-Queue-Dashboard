@@ -16,20 +16,23 @@ export enum JobStatus {
 @Entity('jobs')
 export class Job {
   @PrimaryGeneratedColumn('uuid')
-  id: string;
+  id!: string;
 
   @Column()
-  title: string;
+  title!: string;
 
   @Column()
-  type: string;
+  type!: string;
 
-  @Column({ type: 'text', default: JobStatus.PENDING })
-  status: JobStatus = JobStatus.PENDING;
+  @Column({
+    type: 'text',
+    default: JobStatus.PENDING,
+  })
+  status!: JobStatus;
 
   @CreateDateColumn()
-  createdAt: Date = new Date();
+  createdAt!: Date;
 
   @VersionColumn()
-  version: number = 1;
+  version!: number;
 }
